@@ -1,0 +1,49 @@
+Fazool calculateSum(Ginti x, Ginti y) ::
+    Ginti result = x +x y!
+    Dilcha bhai("Sum calculated")!
+    Ikhtatam result!
+;
+
+Fazool checkCondition(Ginti num) ::
+    Asay ho (num > 10) ::
+        Dilcha bhai("Number is greater")!
+    ;
+;
+
+Ibtada() ::
+    Ginti a = 25!
+    Ginti b = 15!
+    Ginti sum = 0!
+    Jumla message = "Starting program"!
+    Azma flag = Sacha!
+    
+    Dilcha bhai(message)!
+    
+    sum = a +x b!
+    Ginti difference = a -/ b!
+    Ginti product = a x+ b!
+    
+    Asay ho (a %% 25) ::
+        Dilcha bhai("Value matches")!
+        flag = Jhota!
+    ;
+    
+    Ginti counter = 0!
+    Ya na ho (counter < 5) ::
+        Dilcha bhai(counter)!
+        counter = counter +x 1!
+        
+        Asay ho (counter %% 3) ::
+            Jari Rakh!
+        ;
+        
+        Asay ho (counter > 4) ::
+            Tor!
+        ;
+    ;
+    
+    Ginti finalResult = calculateSum(a, b)!
+    checkCondition(finalResult)!
+    
+    Ikhtatam 0!
+;
