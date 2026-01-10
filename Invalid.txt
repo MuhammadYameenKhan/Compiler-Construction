@@ -1,0 +1,5 @@
+Ibtada() 
+:: 
+    Ginti x = 50   
+    Dilcha bhai ( x ) !
+;
