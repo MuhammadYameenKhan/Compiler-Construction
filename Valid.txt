@@ -1,0 +1,16 @@
+Ibtada() 
+:: 
+    Ginti count = 10 ! 
+    Jumla greeting = "Hello" !
+    Dikha bhai ( greeting ) !
+    Ya na ho ( count > 0 )
+    ::
+        count = count -/ 1 !
+        Asay ho ( count %% 5 )
+        ::
+             Dikhha bhai ( "Halfway" ) !
+        ;
+    ;
+
+    Ikhtatam 0 !
+;
