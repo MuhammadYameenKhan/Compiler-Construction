@@ -1,0 +1,62 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "y.tab.h" /* Links to the token codes from the parser */
+
+void yyerror(const char *s);
+%}
+
+/* Enable line counting automatically */
+%option yylineno
+%option noyywrap
+
+DIGIT           [0-9]
+LETTER          [a-zA-Z_]
+IDENTIFIER      {LETTER}({LETTER}|{DIGIT})*
+INTEGER         {DIGIT}+
+FLOAT           {DIGIT}+\.{DIGIT}+
+STRING          \"[^\"]*\"
+
+%%
+
+"Ibtada"        { return MAIN_KEY; }
+"Ikhtatam"      { return RETURN_KEY; }
+"Ginti"         { return INT_KEY; }
+"Jumla"         { return STRING_KEY; }
+"Fazool"        { return VOID_KEY; }
+"Azma"          { return BOOL_KEY; }
+"Tor"           { return BREAK_KEY; }
+"Jari Rakh"     { return CONTINUE_KEY; }
+"Dilcha bhai"   { return COUT_KEY; }
+"Asay ho"       { return IF_KEY; }
+"Ya na ho"      { return WHILE_KEY; }
+"Sacha"         { return TRUE_LIT; }
+"Jhota"         { return FALSE_LIT; }
+
+"+x"            { return ADD_OP; }
+"-/"            { return SUB_OP; }
+"%%"            { return EQ_OP; }
+"x+"            { return MUL_OP; }
+">"             { return GT_OP; }
+"<"             { return LT_OP; }
+"="             { return ASSIGN_OP; }
+
+"::"            { return BLOCK_START; }
+";"             { return BLOCK_END; }
+"!"             { return TERMINATOR; }
+"("             { return LPAREN; }
+")"             { return RPAREN; }
+","             { return COMMA; }
+
+{FLOAT}         { yylval.sval = strdup(yytext); return FLOAT_LIT; }
+{INTEGER}       { yylval.ival = atoi(yytext); return INT_LIT; }
+{STRING}        { yylval.sval = strdup(yytext); return STRING_LIT; }
+{IDENTIFIER}    { yylval.sval = strdup(yytext); return ID; }
+
+[ \t\r\n]+      { /* Ignore whitespace */ }
+"//".* { /* Ignore comments */ }
+
+.               { printf("Unknown character: %s\n", yytext); }
+
+%%
